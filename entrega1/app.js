@@ -1,3 +1,9 @@
+class Libro {
+    constructor(nombre, autor) {
+        this.nombre = nombre
+        this.autor = autor
+    }
+}
 class Usuario {
     constructor(nombre, apellido, libros = [], mascotas = []) {
         this.nombre = nombre
@@ -16,7 +22,7 @@ class Usuario {
         return this.mascotas.length
     }
     addBook(nombre, autor) {
-        this.libros.push(`{nombre:${nombre},autor:${autor}}`)
+        this.libros.push(new Libro(nombre, autor))
     }
     getBookNames() {
 
@@ -24,8 +30,12 @@ class Usuario {
     }
 
 }
-let pepe = new Usuario("pepe", "Perez", [{ nombre: 'El señor de las moscas', autor: 'William Golding' }
-    , { nombre: 'Fundacion', autor: 'Isaac Asimov' }], ['perro', 'gato'])
+let pepe = new Usuario("pepe", "Perez",
+    [
+        new Libro('El señor de las moscas', 'William Golding'),
+        new Libro('Fundacion', 'Isaac ASIMOV')
+    ]
+    , ['perro', 'gato'])
 
 console.log(pepe.getBookNames())
 let elon = new Usuario("Elon", "Musk")
